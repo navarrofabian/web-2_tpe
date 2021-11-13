@@ -53,6 +53,17 @@
     </div>
 {/if}
 
+<div class="col-md-4">
+<h2>Comentar</h2>
+<form class="form-alta" action="createComment" method="post">
+    <input placeholder="content" type="text" name="content" id="content" required>
+    <textarea placeholder="rating" type="number" name="rating" id="rating"> </textarea>
+    <input type="submit" class="btn btn-primary" value="comentar">
+</form>
+</div>
+{include file='templates/vue/comments.tpl'}
+<script src="js/Comments.js"></script>
+
 {include file='templates/footer.tpl'}
 
 

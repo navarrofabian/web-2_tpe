@@ -61,5 +61,8 @@ class ProductController
         $this->model->updateProductFromDB($_POST['model'], $_POST['descriptions'], $_POST['price'], $_POST['id_category'], $id);
         $this->view->showHomeLocation();
     }
+    function showCommentsApi(){
+        $this->view->showComments();
+    }
 
 }

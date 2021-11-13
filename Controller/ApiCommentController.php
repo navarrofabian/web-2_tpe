@@ -16,11 +16,10 @@ class ApiCommentController{
 
     function showCommentsApi(){
         $comments = $this->model->getComments();
-        return $this->view->response($comments, 200);
         if(!$comments){
-            return $this->view->response("No comments found", 404);
+            return $this->view->showComments("No comments found", 404);
         }else{
-            return $this->view->response($comments, 200);
+            return $this->view->showComments($comments, 200);
         }
     }
 

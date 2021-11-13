@@ -22,6 +22,12 @@ class ProductView {
     function showForm($categories){
         $this->smarty->assign('categories', $categories);
     }
+
+    function showComments(){
+        $this->smarty->display('templates/comments.tpl');
+    }
+
+   
    
 
     function showHomeLocation(){
