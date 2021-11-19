@@ -3,7 +3,7 @@
 
 <div class="container">
 <h4>Iniciar sesion</h4>
-    <form class="form-alta" action="verify" method="post">
+    <form action="verifyt" method="post">
         <div class="row mb-3">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
@@ -21,5 +21,6 @@
     </form>
 
 </div>
+<h1>{$error}</h1>
 
 {include file='templates/footer.tpl'}

@@ -12,16 +12,24 @@ class UserController {
         $this->view = new UserView();
     }
     function registerUser(){
-        if(!empty($_POST['email'])&&!empty($_POST['password'])){
+        if(!empty($_POST['userName']) && !empty($_POST['email']) && !empty($_POST['password'])){
+            $userName = $_POST['userName'];
             $userEmail = $_POST['email'];
-            $userPassword =password_hash($_POST['password'],PASSWORD_BCRYPT);
-            $this->model->registerUserDB($userEmail,$userPassword);
-            $this->view->showLogin();
+            var_dump($userName);
+            if($this->model->checkUserName($userName)){
+                $this->view->showLogin("El nombre de usuario ya existe");
+                var_dump("El nombre de usuario ya existe");
+            }else{
+                $userPassword =password_hash($_POST['password'],PASSWORD_BCRYPT);
+                $this->model->registerUserDB($userName, $userEmail, $userPassword);
+                $this->view->showLogin();
+
+            }
+           
         }
     }
 
     function logout(){
-        //session_start();
         session_destroy();
         $this->view->showLogin("Te deslogueaste!");
     }
@@ -35,18 +43,21 @@ class UserController {
     }
 
     function verifyLogin(){
-        if (!empty($_POST['email']) && !empty($_POST['password'])) {
-            $email = $_POST['email'];
+        if(!empty($_POST['userName']) && !empty($_POST['password'])){
+            $userName = $_POST['userName'];
+            var_dump($userName);
             $password = $_POST['password'];
+           
      
             // Obtengo el usuario de la base de datos
-            $user = $this->model->getUser($email);
+            $user = $this->model->getUser($userName);
+         
      
             // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
 
                 session_start();
-                $_SESSION["email"] = $email;
+                $_SESSION["userName"] = $userName;
                 
                 $this->view->showHome();
             } else {

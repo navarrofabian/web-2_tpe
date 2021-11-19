@@ -4,6 +4,12 @@
     <div class="container">
       <h4>Registrarse</h4>
         <form class="form-alta" action="registerUser" method="post">
+        <div class="row mb-3">
+                <label for="inputUser3" class="col-sm-2 col-form-label">Nombre de Usuario</label>
+                <div class="col-sm-10">
+                    <input type="user" class="form-control" name="userName" id="userName">
+                </div>
+            </div>
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-15 01:34:50
+/* Smarty version 3.1.39, created on 2021-11-18 13:17:20
   from 'C:\xampp\htdocs\TPE\templates\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6168be9adc8814_32748787',
+  'unifunc' => 'content_6196445009ec28_65405397',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5e171741875d7dfef3163d855949a458c27272ec' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\footer.tpl',
-      1 => 1634253979,
+      1 => 1637237820,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6168be9adc8814_32748787 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6196445009ec28_65405397 (Smarty_Internal_Template $_smarty_tpl) {
 ?><footer class= "container-fluid">
     <div class="fixed-bottom">
         <figure class="marcas">
@@ -35,12 +35,8 @@ function content_6168be9adc8814_32748787 (Smarty_Internal_Template $_smarty_tpl)
       </div>
     <p></p>
 </footer>
-<?php echo '<script'; ?>
- src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-<?php echo '</script'; ?>
->
 </body>
+
 
 </html><?php }
 }

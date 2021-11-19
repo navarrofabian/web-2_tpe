@@ -17,16 +17,16 @@ class ProductController
     function __construct() {
         $this->model = new ProductModel();
         $this->authHelper = new AuthHelper();
-        $this->view = new ProductView($this->authHelper->getEmail());
+        $this->view = new ProductView($this->authHelper->getUserName());
         $this->modelCategory = new CategoryModel();
-        $this->viewCategory = new CategoryView($this->authHelper->getEmail());
+        $this->viewCategory = new CategoryView($this->authHelper->getUserName());
    
        
     }
 
     function showHome()
     {
-        //$this->authHelper->checkLoggedIn();
+       // $this->authHelper->checkLoggedIn();
         $products = $this->model->getProducts();
         $categories = $this->modelCategory->getCategories();
         $this->view->showProducts($products,$categories);
@@ -60,9 +60,6 @@ class ProductController
         //$this->authHelper->checkLoggedIn();
         $this->model->updateProductFromDB($_POST['model'], $_POST['descriptions'], $_POST['price'], $_POST['id_category'], $id);
         $this->view->showHomeLocation();
-    }
-    function showCommentsApi(){
-        $this->view->showComments();
     }
 
 }

@@ -3,9 +3,9 @@ require_once './libs/smarty-3.1.39/libs/Smarty.class.php';
 class CategoryView {
     private $smarty;
 
-    function __construct($email){
+    function __construct($userName){
         $this->smarty = new Smarty();
-        $this->smarty->assign('email',$email);
+        $this->smarty->assign('userName',$userName);
     }
 
     function showCategories($categories){

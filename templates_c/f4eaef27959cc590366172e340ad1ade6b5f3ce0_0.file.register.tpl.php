@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-19 02:46:18
-  from 'C:\xampp\htdocs\TPE\templates\register.tpl' */
+/* Smarty version 3.1.39, created on 2021-11-17 21:52:35
+  from 'C:\xampp\htdocs\web-2_tpe\templates\register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_619701eaf1c435_78239568',
+  'unifunc' => 'content_61956b93da2ed8_55330153',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '49ff0f6d75c3f0d27d299b0fd05737a458528b06' => 
+    'f4eaef27959cc590366172e340ad1ade6b5f3ce0' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\TPE\\templates\\register.tpl',
-      1 => 1637286377,
+      0 => 'C:\\xampp\\htdocs\\web-2_tpe\\templates\\register.tpl',
+      1 => 1634251079,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_619701eaf1c435_78239568 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61956b93da2ed8_55330153 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:templates/navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -31,12 +31,6 @@ $_smarty_tpl->_subTemplateRender('file:templates/navbar.tpl', $_smarty_tpl->cach
     <div class="container">
       <h4>Registrarse</h4>
         <form class="form-alta" action="registerUser" method="post">
-        <div class="row mb-3">
-                <label for="inputUser3" class="col-sm-2 col-form-label">Nombre de Usuario</label>
-                <div class="col-sm-10">
-                    <input type="user" class="form-control" name="userName" id="userName">
-                </div>
-            </div>
             <div class="row mb-3">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">

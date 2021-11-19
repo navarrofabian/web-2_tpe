@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-13 04:38:25
+/* Smarty version 3.1.39, created on 2021-11-13 23:37:08
   from 'C:\xampp\htdocs\web-2_tpe\templates\productList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_618f3331d69815_94064667',
+  'unifunc' => 'content_61903e14dedf55_79883310',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3a38dc313c1923e0105da198548478f68abe29b5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web-2_tpe\\templates\\productList.tpl',
-      1 => 1636774704,
+      1 => 1636841291,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:templates/header.tpl' => 1,
     'file:templates/navbar.tpl' => 1,
-    'file:templates/vue/comments.tpl' => 1,
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_618f3331d69815_94064667 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61903e14dedf55_79883310 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\web-2_tpe\\libs\\smarty-3.1.39\\libs\\plugins\\modifier.truncate.php','function'=>'smarty_modifier_truncate',),));
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:templates/navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -127,19 +126,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </form>
         </div>
     <?php }?>
-    <div class="col-md-4">
-    <h2>Comentar</h2>
-    <form class="form-alta" action="createComment" method="post">
-        <input placeholder="content" type="text" name="content" id="content" required>
-        <textarea placeholder="rating" type="number" name="rating" id="rating"> </textarea>
-        <input type="submit" class="btn btn-primary" value="comentar">
-    </form>
-</div>
-    <?php $_smarty_tpl->_subTemplateRender('file:templates/vue/comments.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-    <?php echo '<script'; ?>
- src="js/Comments.js"><?php echo '</script'; ?>
->
+
 <?php $_smarty_tpl->_subTemplateRender('file:templates/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }
 }

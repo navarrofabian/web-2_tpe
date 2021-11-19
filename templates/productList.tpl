@@ -24,7 +24,7 @@
                             {if $product->id_category == $category->id_category}<a
                                 href="viewCategory/{$category->id_category}">{$category->type_category}</a>{/if}
                         {/foreach}</td>
-                    {if isset($email)}
+                    {if isset($userName)}
                         <td><a class="btn btn-danger" href="deleteProduct/{$product->id_product}">Delete</a></td>
                     {/if}
 
@@ -38,7 +38,7 @@
 </div>
 
 
-    {if isset($email)}
+    {if isset($userName)}
         <div class="container-fluid">
         <h4>Añadir nuevo producto:</h4>
             <form action="loadProduct" method="post">

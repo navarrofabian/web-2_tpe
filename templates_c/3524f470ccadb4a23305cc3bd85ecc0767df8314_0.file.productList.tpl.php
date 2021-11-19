@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-10-29 00:00:39
+/* Smarty version 3.1.39, created on 2021-11-19 03:24:53
   from 'C:\xampp\htdocs\TPE\templates\productList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_617b1d87872530_33676039',
+  'unifunc' => 'content_61970af50fc688_46625600',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3524f470ccadb4a23305cc3bd85ecc0767df8314' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\productList.tpl',
-      1 => 1635352140,
+      1 => 1637288678,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_617b1d87872530_33676039 (Smarty_Internal_Template $_smarty_tpl) {
+function content_61970af50fc688_46625600 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\TPE\\libs\\smarty-3.1.39\\libs\\plugins\\modifier.truncate.php','function'=>'smarty_modifier_truncate',),));
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:templates/navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -71,7 +71,7 @@ $_smarty_tpl->tpl_vars['category']->do_else = false;
                         <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?></td>
-                    <?php if ((isset($_smarty_tpl->tpl_vars['email']->value))) {?>
+                    <?php if ((isset($_smarty_tpl->tpl_vars['userName']->value))) {?>
                         <td><a class="btn btn-danger" href="deleteProduct/<?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
 ">Delete</a></td>
                     <?php }?>
@@ -88,7 +88,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </div>
 
 
-    <?php if ((isset($_smarty_tpl->tpl_vars['email']->value))) {?>
+    <?php if ((isset($_smarty_tpl->tpl_vars['userName']->value))) {?>
         <div class="container-fluid">
         <h4>Añadir nuevo producto:</h4>
             <form action="loadProduct" method="post">

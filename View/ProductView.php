@@ -3,9 +3,10 @@ require_once './libs/smarty-3.1.39/libs/Smarty.class.php';
 class ProductView {
     private $smarty;
 
-    function __construct($email){
+    function __construct($userName){
         $this->smarty = new Smarty();
-        $this->smarty->assign('email',$email);
+        $this->smarty->assign('userName',$userName);
+    
     }
 
     function showProducts($products, $categories){
@@ -22,12 +23,6 @@ class ProductView {
     function showForm($categories){
         $this->smarty->assign('categories', $categories);
     }
-
-    function showComments(){
-        $this->smarty->display('templates/comments.tpl');
-    }
-
-   
    
 
     function showHomeLocation(){

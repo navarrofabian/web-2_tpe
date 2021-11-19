@@ -8,15 +8,21 @@ class UserModel{
     }
 
 
-    function getUser($email){
-        $query = $this->DB->prepare('SELECT * FROM user WHERE email = ?');
-        $query->execute([$email]);
+    function getUser($userName){
+        $query = $this->DB->prepare('SELECT * FROM user WHERE userName = ?');
+        $query->execute([$userName]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    function registerUserDB($email, $password){
-        $sentencia = $this->DB->prepare("INSERT INTO user(email, password) VALUES (?, ?)");
-        $sentencia->execute(array($email, $password));
+    function registerUserDB($userName, $userEmail, $userPassword){
+        $query = $this->DB->prepare('INSERT INTO user (userName, email, password) VALUES (?, ?, ?)');
+        $query->execute([$userName, $userEmail, $userPassword]);
+    }
+
+    function checkUserName($userName){
+        $query = $this->DB->prepare('SELECT * FROM user WHERE userName = ?');
+        $query->execute([$userName]);
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 
 

@@ -17,9 +17,9 @@ class ApiCommentController{
     function showCommentsApi(){
         $comments = $this->model->getComments();
         if(!$comments){
-            return $this->view->showComments("No comments found", 404);
+            return $this->view->response("No comments found", 404);
         }else{
-            return $this->view->showComments($comments, 200);
+            return $this->view->response($comments, 200);
         }
     }
 

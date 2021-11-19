@@ -34,7 +34,7 @@ switch ($params[0]) {
     case 'logout': 
         $userController->logout(); 
         break;
-    case 'verify': 
+    case 'verifyt': 
         $userController->verifyLogin(); 
         break;
     case 'loadProduct': 

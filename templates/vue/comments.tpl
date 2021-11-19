@@ -1,12 +1,12 @@
 
-
 {literal}
-    <div id="comment">
+    <div id="app">
         <h1>{{ titulo }}</h1>
-
-        <ul id="comments" class="list-group">
+    
+        <ul id="lista-tareas" class="list-group">
             <li v-for="comment in comments" class="list-group-item">
                 {{comment.comment_content}} | {{comment.rating}}
+    
             </li>
         </ul>
     </div>

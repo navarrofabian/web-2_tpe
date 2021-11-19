@@ -1,5 +1,5 @@
 <?php
-session_start();
+ session_start();
 class AuthHelper
 {
 
@@ -9,14 +9,15 @@ class AuthHelper
 
     function checkLoggedIn()
     {
-        if (!isset($_SESSION["email"])) {
+
+        if (!isset($_SESSION["userName"])) {
             header("Location: " . BASE_URL . "login");
         }
     }
-    function getEmail()
-    {
-        if (isset($_SESSION["email"])) {
-            return $_SESSION["email"];
+    function getUserName()
+    { 
+        if (isset($_SESSION["userName"])) {
+            return $_SESSION["userName"];
         }
     }
 }

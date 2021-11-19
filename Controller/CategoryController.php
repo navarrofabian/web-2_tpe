@@ -15,7 +15,7 @@ class CategoryController{
     function __construct() {
         $this->model = new CategoryModel();
         $this->authHelper = new AuthHelper();
-        $this->view = new CategoryView($this->authHelper->getEmail());
+        $this->view = new CategoryView($this->authHelper->getUserName());
         $this->modelProduct = new ProductModel();
 
        

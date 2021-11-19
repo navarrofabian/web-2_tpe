@@ -1,14 +1,13 @@
 "use strict"
 const API_URL = "api/comments";
 
-document.querySelector(".form-alta").addEventListener("submit", insertcomment());
 
 let commentVue = new Vue({
-    //donde se va a renderizar
-    el: "#comment",
+   
+    el: "#app",
     data: {
         titulo: "Comentarios",
-        comments: [], // this->smarty->assign("tareas",  $tareas)
+        comments: [],
     },
 }); 
 
@@ -18,13 +17,45 @@ async function getComments() {
         let response = await fetch(API_URL);
         let comments = await response.json();
 
-        app.comments = comments;
+        commentVue.comments = comments;
     } catch (e) {
         console.log(e);
     }
+    
 }
 
+document.querySelector("#formComment").addEventListener("submit", insertComment);
+
+//async function agregar comentario nuevo usando fetch
+async function insertComment() {
+    let comment_content = document.querySelector("#comment_id").value;
+    let rating = document.querySelector("#rating_id").value;
+    let id_product = document.querySelector("#id_product").value;
+    let id_user = document.querySelector("#id_user").value;
 
 
-//funcion que se ejecuta al hacer submit en el formulario
+    let comment = {
+        "comment_content": comment_content,
+        "rating": rating,
+        "id_product": parseInt(id_product),
+        "id_user": parseInt(id_user)
+    }
+
+    try {
+        let res = await fetch(API_URL, {
+            "method": "POST",
+            "headers": { "Content-type": "application/json" },
+            "body": JSON.stringify(comment)
+
+        });
+        if (res.status === 201) {
+            location.reload();
+
+        }
+    } catch (error) {
+        console.log(error)
+
+    }
+
+}
 getComments();
