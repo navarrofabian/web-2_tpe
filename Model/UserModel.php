@@ -24,6 +24,11 @@ class UserModel{
         $query->execute([$userName]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+    function isAdmin($userName){
+        $query = $this->DB->prepare('SELECT * FROM user WHERE userName = ? AND admin = 1');
+        $query->execute([$userName]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
 
 
 }

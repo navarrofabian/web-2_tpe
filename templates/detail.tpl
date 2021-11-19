@@ -26,7 +26,7 @@
 </div>
 {if isset($userName)}
     <div class="container-fluid">
-        <h4>Editar Producto: {$email}</h4>
+        <h4>Editar Producto: {$userName}</h4>
         <form class="form-alta" action="./updateProduct/{$product->id_product}" method="post">
             <div class="form-group">
                 <label for="model">Modelo</label>
@@ -52,27 +52,30 @@
             <input type="submit" class="btn btn-primary" value="Confirm Edit">
         </form>
     </div>
+{/if}
     <div class="container">
-
+    
         <div class="row mt-4">
+        {if isset($userName)}
             <div class="col-md-4">
                 <h2>Comentar</h2>
                 <form id="formComment">
                     <input placeholder="comment_id" type="text" name="comment_id" id="comment_id">
                     <input placeholder="rating_id" type="number" name="rating_id" id="rating_id">
-                    <input placeholder="id_product" type="number" name="id_product" id="id_product">
+                    <input placeholder="id_product" type="number" name="id_product" id="id_product" value="{$product->id_product}">
                     <input placeholder="id_user" type="number" name="id_user" id="id_user">
                     <input type="submit" class="btn btn-primary" value="Guardar">
                 </form>
             </div>
-
+        {/if}
             <div class="col-md-8">
                 {include file='templates/vue/comments.tpl'}
             </div>
         </div>
+    
 
     </div>
 
     <script src="js/Comments.js"></script>
-{/if}
+
 {include file='templates/footer.tpl'}

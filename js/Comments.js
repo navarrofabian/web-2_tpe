@@ -23,8 +23,10 @@ async function getComments() {
     }
     
 }
-
-document.querySelector("#formComment").addEventListener("submit", insertComment);
+//verificar si el querySelector es distinto de null
+if (document.querySelector("#formComment") != null) {
+  document.querySelector("#formComment").addEventListener("submit", insertComment);
+}
 
 //async function agregar comentario nuevo usando fetch
 async function insertComment() {

@@ -58,6 +58,14 @@ class UserController {
 
                 session_start();
                 $_SESSION["userName"] = $userName;
+                //verificar si el usuario es admin o usuario 
+                if($this->model->isAdmin($userName)){
+                    $_SESSION["admin"] = true;
+                    //$this->view->showHomeAdmin();
+                }else{
+                    $_SESSION["admin"] = false;
+                }
+
                 
                 $this->view->showHome();
             } else {
