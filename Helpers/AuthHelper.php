@@ -20,4 +20,10 @@ class AuthHelper
             return $_SESSION["userName"];
         }
     }
+    function isAdmin()
+    {
+        if (isset($_SESSION["admin"])) {
+            return $_SESSION["admin"];
+        }
+    }
 }

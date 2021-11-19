@@ -3,9 +3,10 @@ require_once './libs/smarty-3.1.39/libs/Smarty.class.php';
 class ProductView {
     private $smarty;
 
-    function __construct($userName){
+    function __construct($userName, $admin){
         $this->smarty = new Smarty();
         $this->smarty->assign('userName',$userName);
+        $this->smarty->assign('admin',$admin);
     
     }
 

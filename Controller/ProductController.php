@@ -17,9 +17,11 @@ class ProductController
     function __construct() {
         $this->model = new ProductModel();
         $this->authHelper = new AuthHelper();
-        $this->view = new ProductView($this->authHelper->getUserName());
+        $userName = $this->authHelper->getUserName();
+        $admin = $this->authHelper->isAdmin();
+        $this->view = new ProductView($userName, $admin);
         $this->modelCategory = new CategoryModel();
-        $this->viewCategory = new CategoryView($this->authHelper->getUserName());
+        $this->viewCategory = new CategoryView($userName, $admin);
    
        
     }

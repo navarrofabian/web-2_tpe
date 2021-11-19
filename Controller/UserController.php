@@ -28,6 +28,10 @@ class UserController {
            
         }
     }
+    function getUsers(){
+        $users = $this->model->getUsersFromDb();
+        $this->view->showUsers($users);
+    }
 
     function logout(){
         session_destroy();

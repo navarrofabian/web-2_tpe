@@ -20,6 +20,11 @@ class UserView{
         $this->smarty->assign('error', $error);   
         $this->smarty->display('templates/register.tpl');
     }
+    function showUsers($users){
+        $this->smarty->assign('titulo', 'Users');
+        $this->smarty->assign('users', $users);
+        $this->smarty->display('templates/users.tpl');
+    }
   
 
     function showHome(){
