@@ -5,8 +5,11 @@ class UserView{
 
     private $smarty;
 
-    function __construct() {
+    function __construct($userName, $admin){
         $this->smarty = new Smarty();
+        $this->smarty->assign('userName',$userName);
+        $this->smarty->assign('admin',$admin);
+    
     }
 
     function showLogin($error = ""){

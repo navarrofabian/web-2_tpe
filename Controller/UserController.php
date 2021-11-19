@@ -8,8 +8,10 @@ class UserController {
     private $view;
 
     function __construct(){
+        $userName = $this->authHelper->getUserName();
+        $admin = $this->authHelper->isAdmin();
         $this->model = new UserModel();
-        $this->view = new UserView();
+        $this->view = new UserView($userName, $admin);
     }
     function registerUser(){
         if(!empty($_POST['userName']) && !empty($_POST['email']) && !empty($_POST['password'])){

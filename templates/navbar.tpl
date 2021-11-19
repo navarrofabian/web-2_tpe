@@ -5,7 +5,7 @@
         <li><a class="navbar-brand" href="register">Registrarse</a></li>
         <li><a class="navbar-brand" href="allCategories/">Todas las categorias</a></li>
         {if isset($admin)}
-            <li><a class="navbar-brand" href="#">Usuarios</a></li>   
+            <li><a class="navbar-brand" href="users">Usuarios</a></li>   
         {/if}
         {if isset($userName)}
             <li><a class="navbar-brand" href="home">{$userName} </a></li>

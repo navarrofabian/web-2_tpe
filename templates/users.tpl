@@ -1,3 +1,5 @@
+{include file='templates/header.tpl'}
+{include file='templates/navbar.tpl'}
 <div class="table-responsive">
     <table class="table table-bordered">
         <thead class="table-dark">
@@ -20,3 +22,5 @@
         </tbody>
     </table>
 </div>
+
+{include file='templates/footer.tpl'}
