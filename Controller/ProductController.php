@@ -14,7 +14,8 @@ class ProductController
     private $modelCategory;
     private $viewCategory;
 
-    function __construct() {
+    function __construct()
+    {
         $this->model = new ProductModel();
         $this->authHelper = new AuthHelper();
         $userName = $this->authHelper->getUserName();
@@ -22,24 +23,37 @@ class ProductController
         $this->view = new ProductView($userName, $admin);
         $this->modelCategory = new CategoryModel();
         $this->viewCategory = new CategoryView($userName, $admin);
-   
-       
     }
 
     function showHome()
     {
-       // $this->authHelper->checkLoggedIn();
+        // $this->authHelper->checkLoggedIn();
         $products = $this->model->getProducts();
         $categories = $this->modelCategory->getCategories();
-        $this->view->showProducts($products,$categories);
-    }   
+        $this->view->showProducts($products, $categories);
+    }
 
     function loadProduct()
     {
-        $this->model->insertProduct($_POST['model'], $_POST['descriptions'], $_POST['price'], $_POST['id_category']);
-        $this->view->showHomeLocation();
+        $model = $_POST['model'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];
+        $category = $_POST['id_category'];
+        if (!empty($model) && !empty($description) && !empty($price) && !empty($category)) {
+            if (
+                $_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg"
+                || $_FILES['input_name']['type'] == "image/png"
+            ) {
+                $this->model->insertProduct($model, $description, $price,$_FILES['input_name']['tmp_name'], $category);
+                $this->view->showHomeLocation();
+            } else {
+                $this->view->showHomeLocation("Error: File type not supported");
+            }
+        } else {
+            $this->view->showHomeLocation("Error faltan datos");
+        }
     }
-   
+
 
     function viewProduct($id)
     {
@@ -63,5 +77,4 @@ class ProductController
         $this->model->updateProductFromDB($_POST['model'], $_POST['descriptions'], $_POST['price'], $_POST['id_category'], $id);
         $this->view->showHomeLocation();
     }
-
 }

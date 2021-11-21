@@ -22,9 +22,24 @@
         return $product;
     }
     
-    function insertProduct($model, $descriptions, $price, $id_category){
-        $sentencia = $this->DB->prepare("INSERT INTO product(model, descriptions, price, id_category) VALUES (?, ?, ?, ?)");
-        $sentencia->execute(array($model, $descriptions, $price, $id_category));
+    function insertProduct($model, $descriptions, $price, $image = null, $id_category){
+        $pathImg = null;
+        if ($image){
+
+            $pathImg = $this->uploadImage($image);
+
+            $query = $this->DB->prepare("INSERT INTO product(model, descriptions, price, image, id_category) VALUES (?, ?, ?, ?, ?)");
+            $query->execute(array($model, $descriptions, $price, $pathImg, $id_category));
+
+            return $this->db->lastInsertId();
+        }
+      
+    }
+
+    private function uploadImage($image){
+        $target = "img/product/" . uniqid() . "." . strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));  
+        move_uploaded_file($image['tmp_name'], $target);
+        return $target;
     }
 
     function deleteProductFromDB($id){
