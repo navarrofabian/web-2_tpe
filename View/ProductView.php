@@ -24,6 +24,11 @@ class ProductView {
     function showForm($categories){
         $this->smarty->assign('categories', $categories);
     }
+    function showError($error = ""){  
+        $this->smarty->assign('titulo', 'Log In');  
+        $this->smarty->assign('error', $error);      
+        $this->smarty->display('templates/productList.tpl');
+    }
    
 
     function showHomeLocation(){

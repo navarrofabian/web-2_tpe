@@ -1,6 +1,12 @@
 {include file='templates/header.tpl'}
 {include file='templates/navbar.tpl'}
 <div class="table-responsive">
+    <figure>
+        {if isset($product->image)}
+            <img src="{$product->image}"/>
+        {/if} 
+    </figure>
+
     <table class="table table-bordered">
         <thead class="table-dark">
             <tr>

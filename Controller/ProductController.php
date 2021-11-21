@@ -36,21 +36,22 @@ class ProductController
     function loadProduct()
     {
         $model = $_POST['model'];
-        $description = $_POST['description'];
+        $description = $_POST['descriptions'];
         $price = $_POST['price'];
         $category = $_POST['id_category'];
+        var_dump($_FILES);
         if (!empty($model) && !empty($description) && !empty($price) && !empty($category)) {
             if (
                 $_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg"
                 || $_FILES['input_name']['type'] == "image/png"
             ) {
-                $this->model->insertProduct($model, $description, $price,$_FILES['input_name']['tmp_name'], $category);
+                $this->model->insertProduct($model, $description, $price,$_FILES['input_name'], $category);
                 $this->view->showHomeLocation();
             } else {
-                $this->view->showHomeLocation("Error: File type not supported");
+                $this->view->showError("Error File type not supported");
             }
         } else {
-            $this->view->showHomeLocation("Error faltan datos");
+            $this->view->showError("Error faltan datos");
         }
     }
 

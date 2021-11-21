@@ -69,7 +69,11 @@
 
             <button type="submit" class="btn btn-success">Cargar</button>
         </form>
+        
     </div>
+{/if}
+{if isset($error)}
+<h4 class="alert-danger">{$error}</h4>
 {/if}
 
 {include file='templates/footer.tpl'}

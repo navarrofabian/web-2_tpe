@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-21 06:09:53
+/* Smarty version 3.1.39, created on 2021-11-21 21:01:48
   from 'C:\xampp\htdocs\TPE\templates\productList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6199d4a1362d92_65974921',
+  'unifunc' => 'content_619aa5acb2d204_98386212',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3524f470ccadb4a23305cc3bd85ecc0767df8314' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\productList.tpl',
-      1 => 1637468961,
+      1 => 1637524907,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_6199d4a1362d92_65974921 (Smarty_Internal_Template $_smarty_tpl) {
+function content_619aa5acb2d204_98386212 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\TPE\\libs\\smarty-3.1.39\\libs\\plugins\\modifier.truncate.php','function'=>'smarty_modifier_truncate',),));
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:templates/navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -129,7 +129,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
             <button type="submit" class="btn btn-success">Cargar</button>
         </form>
+        
     </div>
+<?php }
+if ((isset($_smarty_tpl->tpl_vars['error']->value))) {?>
+<h4 class="alert-danger"><?php echo $_smarty_tpl->tpl_vars['error']->value;?>
+</h4>
 <?php }?>
 
 <?php $_smarty_tpl->_subTemplateRender('file:templates/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

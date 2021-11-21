@@ -24,20 +24,19 @@
     
     function insertProduct($model, $descriptions, $price, $image = null, $id_category){
         $pathImg = null;
-        if ($image){
+        if ($image)
 
             $pathImg = $this->uploadImage($image);
 
             $query = $this->DB->prepare("INSERT INTO product(model, descriptions, price, image, id_category) VALUES (?, ?, ?, ?, ?)");
             $query->execute(array($model, $descriptions, $price, $pathImg, $id_category));
 
-            return $this->db->lastInsertId();
-        }
+            return $this->DB->lastInsertId();
       
     }
 
     private function uploadImage($image){
-        $target = "img/product/" . uniqid() . "." . strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));  
+        $target = "images/products/" . uniqid() . "." . strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));  
         move_uploaded_file($image['tmp_name'], $target);
         return $target;
     }
