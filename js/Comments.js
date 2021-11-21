@@ -23,7 +23,6 @@ async function getComments() {
     }
     
 }
-//verificar si el querySelector es distinto de null
 if (document.querySelector("#formComment") != null) {
   document.querySelector("#formComment").addEventListener("submit", insertComment);
 }
@@ -50,10 +49,7 @@ async function insertComment() {
             "body": JSON.stringify(comment)
 
         });
-        if (res.status === 201) {
-            location.reload();
-
-        }
+        
     } catch (error) {
         console.log(error)
 

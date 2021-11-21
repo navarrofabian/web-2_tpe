@@ -1,13 +1,16 @@
 <?php
 require_once "./Model/UserModel.php";
 require_once "./View/UserView.php";
+require_once "./Helpers/AuthHelper.php";
 
 class UserController {
 
+    private $authHelper;
     private $model;
     private $view;
 
     function __construct(){
+        $this->authHelper = new AuthHelper();
         $userName = $this->authHelper->getUserName();
         $admin = $this->authHelper->isAdmin();
         $this->model = new UserModel();
@@ -33,6 +36,25 @@ class UserController {
     function getUsers(){
         $users = $this->model->getUsersFromDb();
         $this->view->showUsers($users);
+    }
+    function editAccess($id){
+        $user = $this->model->getAdminByID($id);
+        if($user){
+            
+        }
+        if($user['admin'] == 1){
+            $this->model->removeAccess($id);
+            $this->view->showUsers($this->model->getUsersFromDb());
+
+        }
+        else{
+            $this->model->addAccess($id);
+            $this->view->showUsers($this->model->getUsersFromDb());
+        }
+    }
+    function deleteUser($id){
+        $this->model->deleteUser($id);
+        $this->view->showUsers($this->model->getUsersFromDb());
     }
 
     function logout(){

@@ -34,6 +34,25 @@ class UserModel{
         $query->execute([$userName]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+    
+    function getAdminByID($id){
+        $query = $this->DB->prepare('SELECT `admin` FROM user WHERE id_user = ?');
+        $query->execute([$id]);
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    function removeAccess($id){
+        $query = $this->DB->prepare('UPDATE user SET admin = 0 WHERE id_user = ?');
+        $query->execute([$id]);
+    }
 
+    function addAccess($id){
+        $query = $this->DB->prepare('UPDATE user SET admin = 1 WHERE id_user = ?');
+        $query->execute([$id]);
+    }
+
+    function deleteUser($id){
+        $query = $this->DB->prepare('DELETE FROM user WHERE id_user = ?');
+        $query->execute([$id]);
+    }
 
 }

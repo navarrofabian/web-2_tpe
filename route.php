@@ -40,6 +40,12 @@ switch ($params[0]) {
     case 'users': 
         $userController->getUsers(); 
         break;
+    case 'editAccess': 
+        $userController->editAccess($params[1]); 
+        break;
+    case 'deleteUser':
+        $userController->deleteUser($params[1]); 
+        break;
     case 'loadProduct': 
         $productController->loadProduct(); 
         break; 
