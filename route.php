@@ -22,6 +22,9 @@ switch ($params[0]) {
     case 'home': 
         $productController->showHome(); 
         break;
+    case 'page': 
+        $productController->showPage($params[1]); 
+        break;
     case 'register':
         $userController->register();
         break;

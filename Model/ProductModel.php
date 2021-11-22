@@ -49,5 +49,19 @@
         $sentence = $this->DB->prepare("UPDATE  product SET model=?, descriptions=?, price=?, id_category=? WHERE id_product= ?");
         $sentence->execute(array($model, $descriptions, $price, $id_category, $id));
     }
+
+    function getCantPages($cantItems){
+        $sentence = $this->DB->prepare("SELECT COUNT(*) FROM product");
+        $sentence->execute();
+        $cant = $sentence->fetchColumn();
+        return ceil($cant / $cantItems);
+    }
+    function getItemsPerPage($pageNumber){
+        $offset = ($pageNumber - 1) * 10;
+        $sentence = $this->DB->prepare("SELECT * FROM product LIMIT 10 OFFSET ?");
+        $sentence->execute(array($offset));
+        $products = $sentence->fetchAll(PDO::FETCH_OBJ);
+        return $products;
+    }
   
 }

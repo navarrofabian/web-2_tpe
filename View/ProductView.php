@@ -29,6 +29,10 @@ class ProductView {
         $this->smarty->assign('error', $error);      
         $this->smarty->display('templates/productList.tpl');
     }
+
+    function showPagination($cantPages){
+        $this->smarty->assign('cantPages', $cantPages);
+    }
    
 
     function showHomeLocation(){

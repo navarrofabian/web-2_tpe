@@ -28,11 +28,24 @@ class ProductController
     function showHome()
     {
         // $this->authHelper->checkLoggedIn();
+        $cantItems = 10;
+        $cantPages = $this->model->getCantPages($cantItems);
+        $this->view->showPagination($cantPages);
+
         $products = $this->model->getProducts();
         $categories = $this->modelCategory->getCategories();
         $this->view->showProducts($products, $categories);
+        
     }
+    function showPage($pageNumber)
+    {   
+        $cantItems = 10;
+        $cantPages = $this->model->getCantPages($cantItems);
+        $products = $this->model->getItemsPerPage($pageNumber);
+        $categories = $this->modelCategory->getCategories();
+        $this->view->showProducts($products, $categories, $cantPages);
 
+    }
     function loadProduct()
     {
         $model = $_POST['model'];
@@ -78,4 +91,5 @@ class ProductController
         $this->model->updateProductFromDB($_POST['model'], $_POST['descriptions'], $_POST['price'], $_POST['id_category'], $id);
         $this->view->showHomeLocation();
     }
+
 }
