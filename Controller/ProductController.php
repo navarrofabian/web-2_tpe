@@ -34,14 +34,15 @@ class ProductController
 
         $products = $this->model->getProducts();
         $categories = $this->modelCategory->getCategories();
-        $this->view->showProducts($products, $categories);
+        $this->view->showProducts($products, $categories, $cantPages);
         
     }
     function showPage($pageNumber)
     {   
         $cantItems = 10;
+        $start = ($pageNumber -1) * $cantItems;
         $cantPages = $this->model->getCantPages($cantItems);
-        $products = $this->model->getItemsPerPage($pageNumber);
+        $products = $this->model->getProductsPerPage($start, $cantItems);
         $categories = $this->modelCategory->getCategories();
         $this->view->showProducts($products, $categories, $cantPages);
 

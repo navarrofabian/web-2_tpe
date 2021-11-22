@@ -56,10 +56,11 @@
         $cant = $sentence->fetchColumn();
         return ceil($cant / $cantItems);
     }
-    function getItemsPerPage($pageNumber){
-        $offset = ($pageNumber - 1) * 10;
-        $sentence = $this->DB->prepare("SELECT * FROM product LIMIT 10 OFFSET ?");
-        $sentence->execute(array($offset));
+    function getProductsPerPage($start, $cantItems){
+        $sentence = $this->DB->prepare("SELECT * FROM product LIMIT :start, :cantItems");
+        $sentence->bindParam(':start', $start, PDO::PARAM_INT);
+        $sentence->bindParam(':cantItems', $cantItems, PDO::PARAM_INT);
+        $sentence->execute();
         $products = $sentence->fetchAll(PDO::FETCH_OBJ);
         return $products;
     }

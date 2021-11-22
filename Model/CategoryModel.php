@@ -40,6 +40,13 @@
         $category = $sentence->fetch(PDO::FETCH_OBJ);
         return $category;
     }
+    function getCategoryPerPage($pageNumber){
+        $offset = ($pageNumber - 1) * 10;
+        $sentence = $this->DB->prepare("SELECT * FROM product LIMIT 10 OFFSET ?");
+        $sentence->execute(array($offset));
+        $categories = $sentence->fetchAll(PDO::FETCH_OBJ);
+        return $categories;
+    }
 
 
  

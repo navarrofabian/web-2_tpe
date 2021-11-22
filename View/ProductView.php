@@ -10,9 +10,10 @@ class ProductView {
     
     }
 
-    function showProducts($products, $categories){
+    function showProducts($products, $categories, $cantPages){
         $this->smarty->assign('products', $products);
         $this->smarty->assign('categories', $categories);
+        $this->smarty->assign('cantPages', $cantPages);
         $this->smarty->display('templates/productList.tpl');    
     }
    
