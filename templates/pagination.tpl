@@ -6,7 +6,7 @@
 
     
     {for $foo=1 to $cantPages}
-    <li class="page-item"><a class="page-link" href="{$url}?page={$foo}">{$foo}</a></li>
+    <li class="page-item"><a class="page-link" href="page/{$foo}">{$foo}</a></li>
     {/for}
 
 

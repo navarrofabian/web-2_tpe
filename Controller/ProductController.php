@@ -25,18 +25,7 @@ class ProductController
         $this->viewCategory = new CategoryView($userName, $admin);
     }
 
-    function showHome()
-    {
-        // $this->authHelper->checkLoggedIn();
-        $cantItems = 10;
-        $cantPages = $this->model->getCantPages($cantItems);
-        $this->view->showPagination($cantPages);
 
-        $products = $this->model->getProducts();
-        $categories = $this->modelCategory->getCategories();
-        $this->view->showProducts($products, $categories, $cantPages);
-        
-    }
     function showPage($pageNumber)
     {   
         $cantItems = 10;

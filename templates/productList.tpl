@@ -6,7 +6,6 @@
     <table class="table table-bordered">
         <thead class="table-dark">
             <tr>
-                <th>Id product</th>
                 <th>Model</th>
                 <th>Description</th>
                 <th>Price</th>
@@ -16,7 +15,6 @@
         <tbody>
             {foreach from=$products item=$product}
                 <tr>
-                    <td>{$product->id_product}</td>
                     <td><a href="viewProduct/{$product->id_product}">{$product->model}</td>
                     <td>{$product->descriptions|truncate:30}</td>
                     <td>${$product->price}</td>
@@ -76,25 +74,6 @@
 <h4 class="alert-danger">{$error}</h4>
 {/if}
 
-<nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
-    </li>
-
-    
-    {for $foo=1 to $cantPages}
-    <li class="page-item"><a class="page-link" href="page/{$foo}">{$foo}</a></li>
-    {/for}
-
-
-
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-
-{* {include file='templates/pagination.tpl'} *}
+{include file='templates/pagination.tpl'} 
 
 {include file='templates/footer.tpl'}

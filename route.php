@@ -8,8 +8,9 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
+
 }else {
-    $action = 'home';
+    $action = 'page/1';
 }
 
 $params = explode('/', $action);
@@ -19,9 +20,6 @@ $categoryController = new CategoryController();
 $userController = new UserController();
 
 switch ($params[0]) {
-    case 'home': 
-        $productController->showHome(); 
-        break;
     case 'page': 
         $productController->showPage($params[1]); 
         break;
