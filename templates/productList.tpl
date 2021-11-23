@@ -1,5 +1,6 @@
 {include file='templates/header.tpl'}
 {include file='templates/navbar.tpl'}
+{include file='templates/search.tpl'}
 
 
 <div class="table-responsive">
@@ -15,7 +16,7 @@
         <tbody>
             {foreach from=$products item=$product}
                 <tr>
-                    <td><a href="viewProduct/{$product->id_product}">{$product->model}</td>
+                    <td><a href="product/{$product->id_product}">{$product->model}</td>
                     <td>{$product->descriptions|truncate:30}</td>
                     <td>${$product->price}</td>
                     <td>{foreach from=$categories item=$category}

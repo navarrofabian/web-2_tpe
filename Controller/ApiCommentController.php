@@ -13,14 +13,27 @@ class ApiCommentController{
         $this->model = new CommentModel();
         $this->view = new ApiView();
     }
-
-    function showCommentsApi(){
-        $comments = $this->model->getComments();
-        if(!$comments){
-            return $this->view->response("No comments found", 404);
-        }else{
-            return $this->view->response($comments, 200);
+    function getComments($params = null)
+    {
+      
+        if(isset($_GET["sort"]) && isset($_GET["order"])){
+            $attribute = $_GET["sort"];
+            $criterion = $_GET["order"];
+        } else {
+            $attribute = "id_product";
+            $criterion = "asc";
+            
         }
+        $id_product = $params[":ID"];
+        $rating = null;
+        if(isset($_GET["rating"])){
+            $rating = $_GET["rating"];
+        
+            $comments = $this->model->getCommentsByRating($id_product, $rating, $attribute, $criterion);
+        } else {
+            $comments = $this->model->getComments($id_product, $attribute, $criterion);
+        }
+        return $this->view->response($comments, 200);
     }
 
     function getCommentById($params = null) {

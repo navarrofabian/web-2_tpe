@@ -33,6 +33,6 @@ class ProductView {
    
 
     function showHomeLocation(){
-        header ("Location: " .BASE_URL. "home");
+        header ("Location: " .BASE_URL. "page/1");
     }  
 }

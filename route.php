@@ -56,7 +56,7 @@ switch ($params[0]) {
     case 'updateProduct': 
         $productController->updateProduct($params[1]); 
         break;
-    case 'viewProduct': 
+    case 'product': 
         $productController->viewProduct($params[1]); 
         break;
     case 'showPageUpdate': 

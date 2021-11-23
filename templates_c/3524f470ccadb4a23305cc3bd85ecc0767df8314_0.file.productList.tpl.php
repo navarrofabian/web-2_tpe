@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-22 17:18:54
+/* Smarty version 3.1.39, created on 2021-11-23 04:39:29
   from 'C:\xampp\htdocs\TPE\templates\productList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_619bc2ee1b0bf2_60686658',
+  'unifunc' => 'content_619c6271da3ff4_40778920',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3524f470ccadb4a23305cc3bd85ecc0767df8314' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\productList.tpl',
-      1 => 1637597799,
+      1 => 1637638766,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:templates/header.tpl' => 1,
     'file:templates/navbar.tpl' => 1,
+    'file:templates/search.tpl' => 1,
     'file:templates/pagination.tpl' => 1,
     'file:templates/footer.tpl' => 1,
   ),
 ),false)) {
-function content_619bc2ee1b0bf2_60686658 (Smarty_Internal_Template $_smarty_tpl) {
+function content_619c6271da3ff4_40778920 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\TPE\\libs\\smarty-3.1.39\\libs\\plugins\\modifier.truncate.php','function'=>'smarty_modifier_truncate',),));
 $_smarty_tpl->_subTemplateRender('file:templates/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:templates/navbar.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+$_smarty_tpl->_subTemplateRender('file:templates/search.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 
@@ -49,7 +51,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['product']->value
 $_smarty_tpl->tpl_vars['product']->do_else = false;
 ?>
                 <tr>
-                    <td><a href="viewProduct/<?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
+                    <td><a href="product/<?php echo $_smarty_tpl->tpl_vars['product']->value->id_product;?>
 "><?php echo $_smarty_tpl->tpl_vars['product']->value->model;?>
 </td>
                     <td><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['product']->value->descriptions,30);?>

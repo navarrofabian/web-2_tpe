@@ -32,7 +32,7 @@ class CategoryView {
     
     }
     function showHomeLocation(){
-        header ("Location: " .BASE_URL. "home");
+        header ("Location: " .BASE_URL. "page/1");
     }
     function showCategoriesLocation(){
         header ("Location: " .BASE_URL. "allCategories");

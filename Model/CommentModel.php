@@ -8,12 +8,23 @@ class CommentModel{
         $this->db = new PDO ('mysql:host=localhost;'.'dbname=product_btx_db;charset=utf8', 'root', '');
     }
 
-    function getComments(){
-        $sentence = $this->db->prepare( "select * from comment");
-        $sentence->execute();
-        $comments = $sentence->fetchAll(PDO::FETCH_OBJ);
+    function getComments($id_product, $attribute, $criterion)
+    {
+        $sql = "SELECT comment.*, user.userName FROM comment LEFT JOIN user ON comment.id_user = user.id_user WHERE id_product = ? ORDER BY $attribute $criterion";
+        $query = $this->db->prepare($sql);
+        $query->execute(array($id_product));
+        $comments = $query->fetchAll(PDO::FETCH_OBJ);
         return $comments;
-    } 
+    }
+
+    function getCommentsByRating($id_product, $rating, $attribute, $criterion)
+    {
+        $sql = "SELECT comment.*, user.userName FROM comment LEFT JOIN user ON comment.id_user = user.id_user WHERE id_product = ? AND rating = ? ORDER BY $attribute $criterion";
+        $query = $this->db->prepare($sql);
+        $query->execute(array( $id_product, $rating));
+        $comments = $query->fetchAll(PDO::FETCH_OBJ);
+        return $comments;
+    }
 
     function getComment($id){
         $sentence = $this->db->prepare( "select * from comment WHERE id_comment=?");

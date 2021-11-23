@@ -1,6 +1,6 @@
 {include file='templates/header.tpl'}
 {include file='templates/navbar.tpl'}
-<div class="table-responsive">
+<div class="table-responsive"  id="product" data-id="{$product->id_product}">
     <figure>
         {if isset($product->image)}
             <img src="{$product->image}"/>
@@ -74,6 +74,7 @@
                 </form>
             </div>
         {/if}
+        
             <div class="col-md-8">
                 {include file='templates/vue/comments.tpl'}
             </div>

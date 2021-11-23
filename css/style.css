@@ -30,9 +30,6 @@ p.text-monospace {
 figure.logo {
 width: 43%;
 }
-figure{
-    background-color: black
-}
 
 figure.logo img {
 padding-top: 10px;
@@ -43,7 +40,6 @@ width: 100%;
         padding-left: 25%;
     }
     div.container{    
-        background-color: rgba(15, 15, 15, 0.418);
         padding: 5%;
     }
     .logo1 img {
