@@ -9,8 +9,8 @@
         <label class="visually-hidden" for="autoSizingSelect">Preference</label>
         <select class="form-select" name="category" id="category" >
             <option selected>Categoria: </option>
-            {foreach from=$products item=$product}
-                <option value={$product->id_category}>{$product->type_category}</option>
+            {foreach from=$categories item=$category}
+                <option value={$category->id_category}>{$category->type_category}</option>
             {/foreach}
         </select>
     </div>

@@ -17,11 +17,11 @@ class ApiCommentController{
     {
       
         if(isset($_GET["sort"]) && isset($_GET["order"])){
-            $attribute = $_GET["sort"];
-            $criterion = $_GET["order"];
+            $sort = $_GET["sort"];
+            $order = $_GET["order"];
         } else {
-            $attribute = "rating";
-            $criterion = "asc";
+            $sort = "";
+            $order = "";
             
         }
         $id_product = $params[":ID"];
@@ -29,9 +29,9 @@ class ApiCommentController{
         if(isset($_GET["rating"])){
             $rating = $_GET["rating"];
         
-            $comments = $this->model->getCommentsByRating($id_product, $rating, $attribute, $criterion);
+            $comments = $this->model->getCommentsByRating($id_product, $rating, $sort, $order);
         } else {
-            $comments = $this->model->getComments($id_product, $attribute, $criterion);
+            $comments = $this->model->getComments($id_product, $sort, $order);
         }
         return $this->view->response($comments, 200);
     }
@@ -59,22 +59,20 @@ class ApiCommentController{
     }
 
     function saveComment($params = null) {
-        // obtengo el body del request (json)
         $body = $this->getBody();
-
-        // TODO: VALIDACIONES -> 400 (Bad Request)
-
-        $id = $this->model->insertComment($body->comment_content, $body->rating, $body->id_product, $body->id_user);
-        if ($id != 0) {
-            $this->view->response("Comentario enviado", 200);
+        if(!empty($body->comment_content && !empty($body->rating) &&  !empty($body->id_product) &&  !empty($body->id_user))){
+            $comment_content = $body->comment_content;
+            $rating = $body->rating;
+            $id_product = $body->id_product;
+            $id_user = $body->id_user;
+            $date = getdate();
+            $date = $date["year"]."-".$date["mon"]."-".$date["mday"];
+            $comment = $this->model->insertComment($comment_content, $rating, $id_product, $id_user, $date);
+            return $this->view->response($comment, 200);
         } else {
-            $this->view->response("No se pudo enviar el comentario", 500);
+            return $this->view->response("Faltan datos", 400);
         }
     }
-
-    /**
-     * Devuelve el body del request
-     */
     private function getBody() {
         $bodyString = file_get_contents("php://input");
         return json_decode($bodyString);

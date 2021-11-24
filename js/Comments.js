@@ -10,64 +10,19 @@ let commentVue = new Vue({
         titulo: "Comentarios",
         comments: [],
     },
-    mounted: function(){
-        this.getComm();
-      },
-    
-      
-      methods: {
-        /*filter: async function (event) {
-         console.log("function filter");
-          event.preventDefault();
-          let formData = new FormData(form_filtro);
-          let rating = formData.get("rating");
-          try {
-            let response = await fetch(API_URL + "?rating=" + `${rating}`);
-            let comments = await response.json();
-            commentVue.comments = comments;
-          } catch (e) {
-            console.log(e);
-          }
-        },
-        orderBy: async function (event) {
-          event.preventDefault();
-          console.log("function ordenar");
-          let formData = new FormData(form_orden);
-          let atributo = formData.get("sort");
-          let criterio = formData.get("order");
-          try {
-            let response = await fetch(API_URL + "?sort=" + `${atributo}` + "&order=" + `${criterio}`);
-            let comments = await response.json();
-            commentVue.comments = comments;
-          } catch (e) {
-            console.log(e);
-          }
-        },
-        /*deleteComm: async function (id_comm) {
-          try {;
-            let respuesta = await fetch(`api/comments/${id_comm}`, {
-              method: "DELETE",
-            });
-            if (respuesta.ok) {
-              console.log("Comentario eliminado");
-              getComments();
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        },*/
-        getComm: async function () {
-          try {
-            let response = await fetch(API_URL);
-            let comments = await response.json();
-            commentVue.comments = comments;
-          } catch (e) {
-            console.log(e);
-          }
-        }
-      }
-}); 
-//llamada a la funcion filter desde un boton
+
+});
+
+ async function getComm() {
+  try {
+    let response = await fetch(API_URL);
+    let comments = await response.json();
+    commentVue.comments = comments;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 document.querySelector("#filter").addEventListener("click", filter);
 
 async function filter(event) {
@@ -99,8 +54,8 @@ async function orderBy(event) {
         console.log(e);
     }
 }
-
-
+document.querySelector("#getComm").addEventListener("click", getComm);
+getComm();
 
 /*async function getComments() {
 

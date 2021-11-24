@@ -34,7 +34,12 @@ ul.pagination{
     left: 50%;
     transform: translate(-50%, 0);
 
-
+}
+.cont-load{
+    padding: 5% 5% 5% 5%;
+}
+.cont-comm{
+    padding: 5% 10% 10% 10%;
 }
 @media (min-width: 1100px) {
     .marcas{

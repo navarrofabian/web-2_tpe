@@ -29,49 +29,51 @@
         </tbody>
     </table>
 </div>
-<div class="container-">
-
-</div>
-
-
+<div class="cont-load">
 {if ($admin)}
-    <div class="container-fluid">
+    <div class="cont-load">
         <h4>Añadir nuevo producto:</h4>
-        <form action="loadProduct" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="model">Modelo</label>
-                <input type="text" class="form-control" name="model" id="model" required placeholder="Ingrese el modelo">
-            </div>
-            <div class="form-group">
-                <label for="description">Descripción</label>
-                <input type="text" class="form-control" name="descriptions" id="descriptions" required
-                    placeholder="Ingrese una descrpcion">
-            </div>
-            <div class="form-group">
-                <label for="price">Precio</label>
-                <input type="number" class="form-control" name="price" id="price" required placeholder="Ingrese el valor">
-            </div>
-            <div class="form-group">
-                <select name="id_category" id="id_category" placeholder="category" required>
-                    {foreach from=$products item=$product}
-                        <option value={$product->id_category}>{$product->id_category}/{$product->type_category}</option>
-                    {/foreach}
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="file" name="input_name" id="imageToUpload">
-            </div>
+        <div class="col-md-8">
+
+            <form action="loadProduct" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="model">Modelo</label>
+                    <input type="text" class="form-control" name="model" id="model" required
+                        placeholder="Ingrese el modelo">
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <input type="text" class="form-control" name="descriptions" id="descriptions" required
+                        placeholder="Ingrese una descrpcion">
+                </div>
+                <div class="form-group">
+                    <label for="price">Precio</label>
+                    <input type="number" class="form-control" name="price" id="price" required
+                        placeholder="Ingrese el valor">
+                </div>
+                <div class="form-group">
+                    <select name="id_category" id="id_category" placeholder="category" required>
+                        {foreach from=$categories item=$category}
+                            <option value={$category->id_category}>{$category->type_category}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="file" name="input_name" id="imageToUpload">
+                </div>
 
 
-            <button type="submit" class="btn btn-success">Cargar</button>
-        </form>
-        
+                <button type="submit" class="btn btn-success">Cargar</button>
+            </form>
+
+        </div>
     </div>
+</div>  
 {/if}
 {if isset($error)}
-<h4 class="alert-danger">{$error}</h4>
+    <h4 class="alert-danger">{$error}</h4>
 {/if}
 
-{include file='templates/pagination.tpl'} 
+{include file='templates/pagination.tpl'}
 
 {include file='templates/footer.tpl'}
