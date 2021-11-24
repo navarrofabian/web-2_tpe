@@ -27,43 +27,18 @@ class ProductController
 
 
     function showPage($pageNumber)
-    {   
+    {
         $cantItems = 10;
-        $start = ($pageNumber -1) * $cantItems;
+        $start = ($pageNumber - 1) * $cantItems;
         $cantPages = $this->model->getCantPages($cantItems);
-        $products = $this->model->getProductsPerPage($start, $cantItems);
-        $categories = $this->modelCategory->getCategories();
-        $this->view->showProducts($products, $categories, $cantPages);
-
-    }
-    function search(){
-
-        if($_POST['search'] == ""){
-            $this->showPage(1);
-        }else{
-        $search = $_POST['search'];
-        $cantItems = 10;
-        $cantPages = $this->model->getCantPages($cantItems);
-        $products = $this->model->getProductsSearch($search);
-        $categories = $this->modelCategory->getCategories();
-        $this->view->showProducts($products, $categories, $cantPages);
+        if ($cantPages) {
+            $products = $this->model->getProductsPerPage($start, $cantItems);
+            $this->view->showProducts($products, $cantPages);
+        } else {
+            $this->view->showError("No hay productos");
         }
     }
-    function filter(){
-        if(!empty($_POST['category']) || !empty($_POST['gaming']) || !empty($_POST['price'])){
-            var_dump($_POST);
-            $category = $_POST['category'];
-            $tipo = $_POST['gaming'];
-            $priceMax = $_POST['price'];
-            $cantItems = 10;
-            $cantPages = $this->model->getCantPages($cantItems);
-            $products = $this->model->getProductsFilter($category, $tipo, $priceMax);
-            $categories = $this->modelCategory->getCategories();
-            $this->view->showProducts($products, $categories, $cantPages);
-        }else{
-            $this->showPage(1);
-        }
-    }
+
     function loadProduct()
     {
         $model = $_POST['model'];
@@ -76,7 +51,7 @@ class ProductController
                 $_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg"
                 || $_FILES['input_name']['type'] == "image/png"
             ) {
-                $this->model->insertProduct($model, $description, $price,$_FILES['input_name'], $category);
+                $this->model->insertProduct($model, $description, $price, $_FILES['input_name'], $category);
                 $this->view->showHomeLocation();
             } else {
                 $this->view->showError("Error File type not supported");
@@ -89,25 +64,80 @@ class ProductController
 
     function viewProduct($id)
     {
-        //$this->authHelper->checkLoggedIn();
-        $categories = $this->modelCategory->getCategories();
-        $this->view->showForm($categories);
-
-        $product = $this->model->getProduct($id);
-        $this->view->showProduct($product);
+        if (!empty($id)) {
+            $product = $this->model->getProduct($id);
+            $categories = $this->modelCategory->getCategories();
+            if ($categories) {
+                if ($product) {
+                    $this->view->showProduct($product, $categories);
+                } else {
+                    $this->view->showError("No existe el producto");
+                }
+            } else {
+                $this->view->showError("No se encontraron categorias");
+            }
+        } else {
+            $this->view->showError("Error faltan datos");
+        }
     }
 
     function deleteProduct($id)
     {
-        //$this->authHelper->checkLoggedIn();
-        $this->model->deleteProductFromDB($id);
-        $this->view->showHomeLocation();
+        $admin = $this->authHelper->isAdmin();
+        if ($admin == true) {
+            $this->model->deleteProductFromDB($id);
+            $this->view->showHomeLocation();
+        } else {
+            $this->view->showError("No tienes permisos", 403);
+        }
     }
     function updateProduct($id)
     {
-        //$this->authHelper->checkLoggedIn();
-        $this->model->updateProductFromDB($_POST['model'], $_POST['descriptions'], $_POST['price'], $_POST['id_category'], $id);
-        $this->view->showHomeLocation();
+        if (!empty($_POST['model']) && !empty($_POST['descriptions']) && !empty($_POST['price']) && !empty($_POST['id_category'])) {
+            $model = $_POST['model'];
+            $description = $_POST['descriptions'];
+            $price = $_POST['price'];
+            $category = $_POST['id_category'];
+            $admin = $this->authHelper->isAdmin();
+            if ($admin == true) {
+                $this->model->updateProductFromDB($model, $description, $price, $category, $id);
+                $this->view->showHomeLocation();
+            } else {
+                $this->view->showError("No tienes permisos", 403);
+            }
+        } else {
+        }
     }
 
+
+    function search()
+    {
+
+        if ($_POST['search'] == "") {
+            $this->showPage(1);
+        } else {
+            $search = $_POST['search'];
+            $cantItems = 10;
+            $cantPages = $this->model->getCantPages($cantItems);
+            $products = $this->model->getProductsSearch($search);
+            $categories = $this->modelCategory->getCategories();
+            $this->view->showProducts($products, $categories, $cantPages);
+        }
+    }
+    function filter()
+    {
+        if (!empty($_POST['category']) || !empty($_POST['gaming']) || !empty($_POST['price'])) {
+
+            $category = $_POST['category'];
+            $tipo = $_POST['gaming'];
+            $priceMax = $_POST['price'];
+            $cantItems = 10;
+            $cantPages = $this->model->getCantPages($cantItems);
+            $products = $this->model->getProductsFilter($category, $tipo, $priceMax);
+            $categories = $this->modelCategory->getCategories();
+            $this->view->showProducts($products, $categories, $cantPages);
+        } else {
+            $this->showPage(1);
+        }
+    }
 }

@@ -3,10 +3,6 @@ div.table-responsive{
  margin:0% 10% 0% 10% ;
 }
 
-div.container{    
-    background: rgba(0, 129, 182, 0.7);
-    padding: 10%;
-}
 .col-sm-10{
     padding:0% 30% 0% 0% 
 }
@@ -30,6 +26,15 @@ figure{
 figure.logo img {
 padding-top: 10px;
 width: 100%;
+}
+ul.pagination{
+    position: fixed;
+    bottom: 0;  /* At the bottom. */
+      
+    left: 50%;
+    transform: translate(-50%, 0);
+
+
 }
 @media (min-width: 1100px) {
     .marcas{

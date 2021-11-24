@@ -31,6 +31,10 @@ class CategoryView {
         $this->smarty->display('templates/updateCategory.tpl');
     
     }
+    function showError($error = ""){  
+        $this->smarty->assign('titulo', 'Log In');  
+        $this->smarty->assign('error', $error);  
+    }
     function showHomeLocation(){
         header ("Location: " .BASE_URL. "page/1");
     }

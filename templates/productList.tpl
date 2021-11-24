@@ -19,11 +19,8 @@
                     <td><a href="product/{$product->id_product}">{$product->model}</td>
                     <td>{$product->descriptions|truncate:30}</td>
                     <td>${$product->price}</td>
-                    <td>{foreach from=$categories item=$category}
-                            {if $product->id_category == $category->id_category}<a
-                                href="viewCategory/{$category->id_category}">{$category->type_category}</a>{/if}
-                        {/foreach}</td>
-                    {if isset($userName)}
+                    <td><a href="viewCategory/{$product->id_category}">{$product->type_category}</td>
+                    {if ($admin)}
                         <td><a class="btn btn-danger" href="deleteProduct/{$product->id_product}">Delete</a></td>
                     {/if}
 
@@ -37,7 +34,7 @@
 </div>
 
 
-{if isset($userName)}
+{if ($admin)}
     <div class="container-fluid">
         <h4>Añadir nuevo producto:</h4>
         <form action="loadProduct" method="POST" enctype="multipart/form-data">
@@ -56,8 +53,8 @@
             </div>
             <div class="form-group">
                 <select name="id_category" id="id_category" placeholder="category" required>
-                    {foreach from=$categories item=$category}
-                        <option value={$category->id_category}>{$category->id_category}/{$category->type_category}</option>
+                    {foreach from=$products item=$product}
+                        <option value={$product->id_category}>{$product->id_category}/{$product->type_category}</option>
                     {/foreach}
                 </select>
             </div>

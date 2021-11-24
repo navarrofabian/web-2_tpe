@@ -30,15 +30,21 @@ class CategoryController{
 
     function loadCategory()
     {
-        $this->model->insertCategory($_POST['id_category'], $_POST['type_category'], $_POST['brand']);
-        $this->view->showCategoriesLocation();
+        if (!empty($_POST['id_category']) || !empty($_POST['type_category']) || !empty($_POST['brand'])) {
+            $id_category = $_POST['id_category'];
+            $type_category = $_POST['type_category'];
+            $brand = $_POST['brand'];
+            $this->model->insertCategory($id_category, $type_category, $brand);
+            $this->view->showHomeLocation();
+        } else {
+            $this->view->showError("Error, campos incompletos");
+        }
     }
 
     function sendAllCategories()
     {
         $categories = $this->model->getCategories();
-        $products = $this->modelProduct->getProducts(); 
-        $this->view->showAllCategories($categories, $products );
+        $this->view->showAllCategories($categories);
     }
 
     function deleteCategory($id)

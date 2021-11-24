@@ -1,6 +1,7 @@
 {include file='templates/header.tpl'}
 {include file='templates/navbar.tpl'}
 <div class="table-responsive">
+{if ($admin)}
     <table class="table table-bordered">
         <thead class="table-dark">
             <tr>
@@ -47,6 +48,7 @@
             {/foreach}
         </tbody>
     </table>
+{/if}
 </div>
 
 {include file='templates/footer.tpl'}

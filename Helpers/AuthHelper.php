@@ -20,10 +20,20 @@ class AuthHelper
             return $_SESSION["userName"];
         }
     }
+    function checkAdmin()
+    {
+
+        if (!isset($_SESSION["admin"])) {
+            header("Location: " . BASE_URL . "login");
+        }
+    }
     function isAdmin()
     {
         if (isset($_SESSION["admin"])) {
             return $_SESSION["admin"];
+        }
+        else{
+            return false;
         }
     }
 }

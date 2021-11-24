@@ -20,14 +20,13 @@ class UserController {
         if(!empty($_POST['userName']) && !empty($_POST['email']) && !empty($_POST['password'])){
             $userName = $_POST['userName'];
             $userEmail = $_POST['email'];
-            var_dump($userName);
             if($this->model->checkUserName($userName)){
                 $this->view->showLogin("El nombre de usuario ya existe");
-                var_dump("El nombre de usuario ya existe");
             }else{
                 $userPassword =password_hash($_POST['password'],PASSWORD_BCRYPT);
                 $this->model->registerUserDB($userName, $userEmail, $userPassword);
-                $this->view->showLogin();
+                $this->verifyLogin();
+                $this->view->showHome();
 
             }
            
@@ -86,14 +85,12 @@ class UserController {
 
                 session_start();
                 $_SESSION["userName"] = $userName;
-                //verificar si el usuario es admin o usuario 
-                if($this->model->isAdmin($userName)){
+                if( $user->admin == 1){
                     $_SESSION["admin"] = true;
-                    //$this->view->showHomeAdmin();
-                }else{
+                }
+                else{
                     $_SESSION["admin"] = false;
                 }
-
                 
                 $this->view->showHome();
             } else {

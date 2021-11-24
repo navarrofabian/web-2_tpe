@@ -18,7 +18,7 @@
                         <a class="nav-link" href="register">Registrarse</a>
                     </li>
                 {/if}
-                {if isset($admin)}
+                {if ($admin)}
                     <li class="nav-item">
                         <a class="nav-link" href="users">Usuarios</a>
                     </li>

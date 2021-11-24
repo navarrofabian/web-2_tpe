@@ -17,7 +17,7 @@
         <td>{$category->id_category}</td>
         <td><a href="./viewCategory/{$category->id_category}">{$category->type_category}</td>
         <td>{$category->brand|truncate:30}</td>
-        {if isset($userName)}
+        {if ($admin)}
         <td> <a class="btn btn-warning"loc href="./showPageUpdate/{$category->id_category}">Edit </a></td>
         <td> <a class="btn btn-danger" href="./deletecategory/{$category->id_category}">Delete</a></td> 
        {/if}            
@@ -27,7 +27,7 @@
   </table>
 </div>
 
-{if isset($userName)}
+{if ($admin)}
   <div class="container-fluid">
   <h4>Añadir nueva categoria:</h4>
       <form class="form-alta" action="./loadCategory" method="post">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-24 04:32:11
+/* Smarty version 3.1.39, created on 2021-11-24 16:03:31
   from 'C:\xampp\htdocs\TPE\templates\search&filter.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_619db23b4edcc4_22482734',
+  'unifunc' => 'content_619e544385c7c1_02510388',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe793e8dbaaebea201ecc60d7484270a098e952f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\search&filter.tpl',
-      1 => 1637724449,
+      1 => 1637766209,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_619db23b4edcc4_22482734 (Smarty_Internal_Template $_smarty_tpl) {
+function content_619e544385c7c1_02510388 (Smarty_Internal_Template $_smarty_tpl) {
 ?><form class="row gy-2 gx-3 align-items-center" action="filter" method="POST">
 
     <div class="col-auto">
@@ -33,13 +33,13 @@ function content_619db23b4edcc4_22482734 (Smarty_Internal_Template $_smarty_tpl)
         <select class="form-select" name="category" id="category" >
             <option selected>Categoria: </option>
             <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'category');
-$_smarty_tpl->tpl_vars['category']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
-$_smarty_tpl->tpl_vars['category']->do_else = false;
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['products']->value, 'product');
+$_smarty_tpl->tpl_vars['product']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['product']->value) {
+$_smarty_tpl->tpl_vars['product']->do_else = false;
 ?>
-                <option value=<?php echo $_smarty_tpl->tpl_vars['category']->value->id_category;?>
-><?php echo $_smarty_tpl->tpl_vars['category']->value->type_category;?>
+                <option value=<?php echo $_smarty_tpl->tpl_vars['product']->value->id_category;?>
+><?php echo $_smarty_tpl->tpl_vars['product']->value->type_category;?>
 </option>
             <?php
 }
@@ -55,7 +55,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </select>
     </div>
     <div class="col-auto">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
 </form>
 <?php }
