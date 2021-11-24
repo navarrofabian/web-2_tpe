@@ -1,23 +1,43 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="page/1">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="allCategories/">Categorias</a>
+                </li>
+                {if !isset($userName)}
+                    <li class="nav-item">
+                        <a class="nav-link" href="login">Ingresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register">Registrarse</a>
+                    </li>
+                {/if}
+                {if isset($admin)}
+                    <li class="nav-item">
+                        <a class="nav-link" href="users">Usuarios</a>
+                    </li>
+                {/if}
 
+                {if isset($userName)}
+                    <li class="nav-item">
+                        <a class="nav-link disabled">{$userName}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Salir</a>
+                    </li>
+                {/if}
 
-    <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li><a class="navbar-brand" href="page/1">Inicio</a></li>
-        <li><a class="navbar-brand" href="login">Ingresar</a></li>
-        <li><a class="navbar-brand" href="register">Registrarse</a></li>
-        <li><a class="navbar-brand" href="allCategories/">Todas las categorias</a></li>
-        {if isset($admin)}
-            <li><a class="navbar-brand" href="users">Usuarios</a></li>
-        {/if}
-        {if isset($userName)}
-            <li><a class="navbar-brand" href="page/1">{$userName} </a></li>
-            <li><a class="navbar-brand" href="logout">Salir </a></li>
-        {/if}
-    </ul>
-
+            </ul>
+            <form class="d-flex" action="search" method="post">
+                <input class="form-control me-2" name="search" id="search" type="search" placeholder="productos..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+        </div>
+    </div>
 </nav>

@@ -32,7 +32,7 @@
 
         <ul id="lista-tareas" class="list-group">
             <li v-for="comment in comments" class="list-group-item">
-            id_comment :  {{comment.id_comment}} -- comentario:  {{comment.comment_content}} -- puntaje : {{comment.rating}} -- id producto : {{comment.id_product}} --id usuario : {{comment.id_user}} -- nombre :  {{comment.userName}}
+             {{comment.comment_content}} -- puntaje : {{comment.rating}} -- id producto : {{comment.id_product}} --id usuario : {{comment.id_user}} -- nombre :  {{comment.userName}}
 
             </li>
         </ul>

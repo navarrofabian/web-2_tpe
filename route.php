@@ -50,6 +50,12 @@ switch ($params[0]) {
     case 'loadProduct': 
         $productController->loadProduct(); 
         break; 
+    case 'search': 
+       $productController->search(); 
+       break;
+    case 'filter': 
+        $productController->filter(); 
+        break;
     case 'deleteProduct': 
         $productController->deleteProduct($params[1]); 
         break;

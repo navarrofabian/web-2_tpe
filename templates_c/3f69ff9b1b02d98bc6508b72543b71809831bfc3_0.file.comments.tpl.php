@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-23 05:58:49
+/* Smarty version 3.1.39, created on 2021-11-23 06:17:07
   from 'C:\xampp\htdocs\TPE\templates\vue\comments.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_619c75092f0380_24069612',
+  'unifunc' => 'content_619c79530e5495_48970433',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3f69ff9b1b02d98bc6508b72543b71809831bfc3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\vue\\comments.tpl',
-      1 => 1637643393,
+      1 => 1637644624,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_619c75092f0380_24069612 (Smarty_Internal_Template $_smarty_tpl) {
+function content_619c79530e5495_48970433 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
     <h3> Filtrar por puntaje </h3>
 
@@ -55,7 +55,7 @@ function content_619c75092f0380_24069612 (Smarty_Internal_Template $_smarty_tpl)
 
         <ul id="lista-tareas" class="list-group">
             <li v-for="comment in comments" class="list-group-item">
-            id_comment :  {{comment.id_comment}} -- comentario:  {{comment.comment_content}} -- puntaje : {{comment.rating}} -- id producto : {{comment.id_product}} --id usuario : {{comment.id_user}} -- nombre :  {{comment.userName}}
+             {{comment.comment_content}} -- puntaje : {{comment.rating}} -- id producto : {{comment.id_product}} --id usuario : {{comment.id_user}} -- nombre :  {{comment.userName}}
 
             </li>
         </ul>

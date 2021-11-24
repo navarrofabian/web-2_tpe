@@ -1,6 +1,6 @@
 {include file='templates/header.tpl'}
 {include file='templates/navbar.tpl'}
-{include file='templates/search.tpl'}
+{include file='templates/search&filter.tpl'}
 
 
 <div class="table-responsive">

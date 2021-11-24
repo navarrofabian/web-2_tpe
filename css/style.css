@@ -3,9 +3,6 @@ div.table-responsive{
  margin:0% 10% 0% 10% ;
 }
 
- div.container-fluid{
-    padding: 5% 10% 10% 10%;
-} 
 div.container{    
     background: rgba(0, 129, 182, 0.7);
     padding: 10%;
@@ -19,16 +16,15 @@ div.container{
 p.text-monospace {
     color: rgb(202, 198, 198);
 }
-.navbar{
-    padding: 2% 10% 5% 10%;
-    
-}
 .logo1 img {
    width: 50%;
    padding-left: 10%;
   }
 figure.logo {
 width: 43%;
+}
+figure{
+    background-color: black
 }
 
 figure.logo img {
@@ -46,9 +42,6 @@ width: 100%;
         width: 20%;
         padding-left: 10%;
        }
-    .navbar{
-        padding: 0% 10% 2% 10%;
-        
-    }
+
  }
  

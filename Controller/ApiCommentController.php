@@ -20,7 +20,7 @@ class ApiCommentController{
             $attribute = $_GET["sort"];
             $criterion = $_GET["order"];
         } else {
-            $attribute = "id_product";
+            $attribute = "rating";
             $criterion = "asc";
             
         }

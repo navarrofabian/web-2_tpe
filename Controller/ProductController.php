@@ -36,6 +36,34 @@ class ProductController
         $this->view->showProducts($products, $categories, $cantPages);
 
     }
+    function search(){
+
+        if($_POST['search'] == ""){
+            $this->showPage(1);
+        }else{
+        $search = $_POST['search'];
+        $cantItems = 10;
+        $cantPages = $this->model->getCantPages($cantItems);
+        $products = $this->model->getProductsSearch($search);
+        $categories = $this->modelCategory->getCategories();
+        $this->view->showProducts($products, $categories, $cantPages);
+        }
+    }
+    function filter(){
+        if(!empty($_POST['category']) || !empty($_POST['gaming']) || !empty($_POST['price'])){
+            var_dump($_POST);
+            $category = $_POST['category'];
+            $tipo = $_POST['gaming'];
+            $priceMax = $_POST['price'];
+            $cantItems = 10;
+            $cantPages = $this->model->getCantPages($cantItems);
+            $products = $this->model->getProductsFilter($category, $tipo, $priceMax);
+            $categories = $this->modelCategory->getCategories();
+            $this->view->showProducts($products, $categories, $cantPages);
+        }else{
+            $this->showPage(1);
+        }
+    }
     function loadProduct()
     {
         $model = $_POST['model'];
