@@ -74,13 +74,7 @@ class UserController {
             $userName = $_POST['userName'];
             var_dump($userName);
             $password = $_POST['password'];
-           
-     
-            // Obtengo el usuario de la base de datos
             $user = $this->model->getUser($userName);
-         
-     
-            // Si el usuario existe y las contraseñas coinciden
             if ($user && password_verify($password, $user->password)) {
 
                 session_start();
