@@ -1,5 +1,6 @@
 "use strict"
 let id_prod = document.querySelector("#product").dataset.id;
+let admin = document.querySelector("#product").dataset.role;
 const API_URL = "api/product/" + id_prod + "/comments";
 
 
@@ -10,17 +11,38 @@ let commentVue = new Vue({
         titulo: "Comentarios",
         comments: [],
     },
+    mounted: function(){
+      this.getComm();
+    },
+    methods: {
+      getComm: async function () {
+        try {
+          let response = await fetch(API_URL);
+          let comments = await response.json();
+          commentVue.comments = comments;
+        } catch (e) {
+          console.log(e);
+        }
+      },
+      
+      deleteComm: async function (id_comm) {
+        try {
+          let respuesta = await fetch(`api/comments/${id_comm}`, {
+            method: "DELETE",
+          });
+          if (respuesta.ok) {
+            console.log("Comentario eliminado");
+            this.getComm();
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+    }
 }); 
 
-async function getComm() {
-    try {
-        let response = await fetch(API_URL);
-        let comments = await response.json();
-        commentVue.comments = comments;
-    } catch (e) {
-        console.log(e);
-    }
-}
+
 document.querySelector("#filter").addEventListener("click", filter);
 
 async function filter(event) {
@@ -83,7 +105,7 @@ async function insertComment(event) {
 
             let comment = await res.json();
             commentVue.comments.push(comment);
-            getComm();
+            this.getComm();
         }
         
     } catch (error) {
@@ -92,5 +114,4 @@ async function insertComment(event) {
     }
 
 }
-getComm();
 

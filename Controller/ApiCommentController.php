@@ -20,8 +20,8 @@ class ApiCommentController{
             $attribute = $_GET["sort"];
             $criterion = $_GET["order"];
         } else {
-            $attribute = "rating";
-            $criterion = "asc";
+            $attribute = "";
+            $criterion = "";
             
         }
         $id_product = $params[":ID"];
@@ -34,16 +34,6 @@ class ApiCommentController{
             $comments = $this->model->getComments($id_product, $attribute, $criterion);
         }
         return $this->view->response($comments, 200);
-    }
-
-    function getCommentById($params = null) {
-        $idComment = $params[":ID"];
-        $comment = $this->model->getComment($idComment);
-        if ($comment) {
-            return $this->view->response($comment, 200);
-        } else {
-            return $this->view->response("Este comentario no existe", 404);
-        }
     }
 
     function deleteComment($params = null) {
@@ -71,10 +61,6 @@ class ApiCommentController{
             $this->view->response("No se pudo enviar el comentario", 500);
         }
     }
-
-    /**
-     * Devuelve el body del request
-     */
     private function getBody() {
         $bodyString = file_get_contents("php://input");
         return json_decode($bodyString);

@@ -9,7 +9,7 @@
             <option value="4">4</option>
             <option value="5">5</option>
         </select>
-        <input id ="filter" type="submit" value="Filtrar"class="btn btn-outline-success">
+        <input id ="filter" type="submit" value="filtrar"class="btn btn-outline-success">
         <input id="getComm" type="submit" name="getComm" value="Mostrar todos" class="btn btn-light">
     </form>
     
@@ -33,8 +33,8 @@
 
         <ul id="lista-tareas" class="list-group">
             <li v-for="comment in comments" class="list-group-item">
-             {{comment.comment_content}} -- puntaje : {{comment.rating}} -- id producto : {{comment.id_product}} --id usuario : {{comment.id_user}} -- nombre :  {{comment.userName}}
-
+             {{comment.comment_content}} -- puntaje : {{comment.rating}}   nombre :  {{comment.userName}}
+             <a  v-on:click="deleteComm(comment.id_comment)" data-id="comment.id_comment" class="btn btn-outline-danger">Borrar</a></li>
             </li>
         </ul>
     </div>

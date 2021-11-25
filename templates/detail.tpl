@@ -2,8 +2,7 @@
 {include file='templates/navbar.tpl'}
 {if !empty($product)}
     {if !empty($categories)}
-
-        <div class="table-responsive" id="product" data-id="{$product->id_product}">
+        <div class="table-responsive" id="product" data-id="{$product->id_product}" data-role="{$admin}">
             <figure>
                 {if isset($product->image)}
                     <img src="{$product->image}" />
@@ -61,7 +60,7 @@
         <div class="container">
 
             <div class="row mt-4">
-                {if isset($userName)}
+                {if isset($userName)||($admin)}
                     <div class="col-md-4">
                         <h2>Comentar</h2>
                         <form id="formComment">
