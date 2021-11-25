@@ -34,8 +34,13 @@ class CategoryController{
             $id_category = $_POST['id_category'];
             $type_category = $_POST['type_category'];
             $brand = $_POST['brand'];
-            $this->model->insertCategory($id_category, $type_category, $brand);
-            $this->view->showHomeLocation();
+            $admin = $this->authHelper->isAdmin();
+            if ($admin == true) {
+                $this->model->insertCategory($id_category, $type_category, $brand);
+                $this->view->showHomeLocation();
+            } else {
+                $this->view->showError("No tiene permisos para realizar esta acción");
+            }
         } else {
             $this->view->showError("Error, campos incompletos");
         }
@@ -44,7 +49,11 @@ class CategoryController{
     function sendAllCategories()
     {
         $categories = $this->model->getCategories();
-        $this->view->showAllCategories($categories);
+        if($categories){
+            $this->view->showCategories($categories);
+        }else{
+            $this->view->showError("No hay categorias");
+        }
     }
 
     function deleteCategory($id)

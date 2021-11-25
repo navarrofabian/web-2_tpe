@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-11-25 03:16:32
+/* Smarty version 3.1.39, created on 2021-11-25 03:21:09
   from 'C:\xampp\htdocs\TPE\templates\vue\comments.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_619ef20079f8a3_30610471',
+  'unifunc' => 'content_619ef315bb0849_15548841',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3f69ff9b1b02d98bc6508b72543b71809831bfc3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\vue\\comments.tpl',
-      1 => 1637806590,
+      1 => 1637806863,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_619ef20079f8a3_30610471 (Smarty_Internal_Template $_smarty_tpl) {
+function content_619ef315bb0849_15548841 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
     <h3> Filtrar por puntaje </h3>
 
@@ -57,7 +57,7 @@ function content_619ef20079f8a3_30610471 (Smarty_Internal_Template $_smarty_tpl)
         <ul id="lista-tareas" class="list-group">
             <li v-for="comment in comments" class="list-group-item">
              {{comment.comment_content}} -- puntaje : {{comment.rating}}   nombre :  {{comment.userName}}
-             <a  v-on:click="deleteComm(comment.id_comment)" data-id="comment.id_comment" class="btn btn-outline-danger">Borrar</a></li>
+             <a v-if="admin == '1'" v-on:click="deleteComm(comment.id_comment)" data-id="comment.id_comment" class="btn btn-outline-danger">Borrar</a></li>
             </li>
         </ul>
     </div>

@@ -1,6 +1,6 @@
 "use strict"
 let id_prod = document.querySelector("#product").dataset.id;
-let admin = document.querySelector("#product").dataset.role;
+let admin_rol = document.querySelector("#product").dataset.role;
 const API_URL = "api/product/" + id_prod + "/comments";
 
 
@@ -10,6 +10,7 @@ let commentVue = new Vue({
     data: {
         titulo: "Comentarios",
         comments: [],
+        admin: admin_rol,
     },
     mounted: function(){
       this.getComm();
@@ -105,7 +106,10 @@ async function insertComment(event) {
 
             let comment = await res.json();
             commentVue.comments.push(comment);
-            this.getComm();
+            console.log(comment);
+            document.querySelector("#formComment").reset();
+            commentVue.getComm();
+
         }
         
     } catch (error) {

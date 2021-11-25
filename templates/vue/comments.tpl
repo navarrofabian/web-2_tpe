@@ -34,7 +34,7 @@
         <ul id="lista-tareas" class="list-group">
             <li v-for="comment in comments" class="list-group-item">
              {{comment.comment_content}} -- puntaje : {{comment.rating}}   nombre :  {{comment.userName}}
-             <a  v-on:click="deleteComm(comment.id_comment)" data-id="comment.id_comment" class="btn btn-outline-danger">Borrar</a></li>
+             <a v-if="admin == '1'" v-on:click="deleteComm(comment.id_comment)" data-id="comment.id_comment" class="btn btn-outline-danger">Borrar</a></li>
             </li>
         </ul>
     </div>

@@ -72,17 +72,21 @@ class ProductController
             $product = $this->model->getProduct($id);
             $categories = $this->modelCategory->getCategories();
             $user = $this->userModel->getUser($this->authHelper->getUserName());
-            $id = $user->id_user;
-
-            if ($categories) {
-                if ($product) {
-                    $this->view->showProduct($product, $categories, $id);
+            if($user){
+                $id = $user->id_user;
+                if ($categories) {
+                    if ($product) {
+                        $this->view->showProduct($product, $categories, $id);
+                    } else {
+                        $this->view->showError("No existe el producto");
+                    }
                 } else {
-                    $this->view->showError("No existe el producto");
+                    $this->view->showError("No se encontraron categorias");
                 }
-            } else {
-                $this->view->showError("No se encontraron categorias");
+            }else {
+                $this->view->showError("No existe el usuario");
             }
+            
         } else {
             $this->view->showError("Error faltan datos");
         }
