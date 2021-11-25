@@ -58,16 +58,30 @@ class CategoryController{
 
     function deleteCategory($id)
     {
-        $this->authHelper->checkLoggedIn();
-
-        $this->model->deleteCategoryFromDB($id);
-        $this->view->showCategoriesLocation();
+        $admin = $this->authHelper->isAdmin();
+        if ($admin == true) {
+            $this->model->deleteCategoryFromDB($id);
+            $this->view->showHomeLocation();
+        } else {
+            $this->view->showError("No tiene permisos para realizar esta acción");
+        }
     }
 
     function updateCategory($id)
-    {
-        $this->model->updateCategoryFromDB($_POST['id_category'], $_POST['type_category'], $_POST['brand'], $id);
-        $this->view->showCategoriesLocation();
+    {   if(!empty($_POST['id_category']) || !empty($_POST['type_category']) || !empty($_POST['brand'])){
+            $id_category = $_POST['id_category'];
+            $type_category = $_POST['type_category'];
+            $brand = $_POST['brand'];
+            $admin = $this->authHelper->isAdmin();
+            if ($admin == true) {
+                $this->model->updateCategoryFromDB( $id_category, $type_category, $brand, $id,);
+                $this->view->showHomeLocation();
+            } else {
+                $this->view->showError("No tiene permisos para realizar esta acción");
+            }
+        }else{
+            $this->view->showError("Error, campos incompletos");
+        }
     }
     function showPageUpdate($id_category){
         $Category = $this->model->getOneCategory($id_category);

@@ -37,7 +37,11 @@ class ProductController
         if ($cantPages) {
             $categories = $this->modelCategory->getCategories();
             $products = $this->model->getProductsPerPage($start, $cantItems);
-            $this->view->showProducts($products,$categories, $cantPages);
+            if($products) {
+                $this->view->showProducts($products,$categories, $cantPages);
+            }else{
+                $this->view->showError("No hay productos");
+            }
         } else {
             $this->view->showError("No hay productos");
         }

@@ -34,7 +34,11 @@ class UserController {
     }
     function getUsers(){
         $users = $this->model->getUsersFromDb();
-        $this->view->showUsers($users);
+        if($users){
+            $this->view->showUsers($users);
+        }else{  
+            $this->view->showError("No hay usuarios");
+        }
     }
     function editAccess($id){
         $user = $this->model->getAdminByID($id);
@@ -52,8 +56,12 @@ class UserController {
         }
     }
     function deleteUser($id){
-        $this->model->deleteUser($id);
-        $this->view->showUsers($this->model->getUsersFromDb());
+        if($this->AuthHelper->isAdmin()){
+            $this->model->deleteUser($id);
+            $this->view->showUsers($this->model->getUsersFromDb());
+        }else{
+            $this->view->showError("No tienes permisos");
+        }
     }
 
     function logout(){
