@@ -8,7 +8,7 @@ $router->addRoute('product/:ID/comments', 'GET', 'ApiCommentController', 'getCom
 
 $router->addRoute('comments/:ID', 'GET', 'ApiCommentController', 'getCommentById');
 $router->addRoute('comments/:ID', 'DELETE', 'ApiCommentController', 'deleteComment');
-$router->addRoute('products/:ID/comments', 'POST', 'ApiCommentController', 'saveComment');
+$router->addRoute('product/:ID/comments', 'POST', 'ApiCommentController', 'saveComment');
 
 
 

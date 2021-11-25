@@ -10,19 +10,17 @@ let commentVue = new Vue({
         titulo: "Comentarios",
         comments: [],
     },
+}); 
 
-});
-
- async function getComm() {
-  try {
-    let response = await fetch(API_URL);
-    let comments = await response.json();
-    commentVue.comments = comments;
-  } catch (e) {
-    console.log(e);
-  }
+async function getComm() {
+    try {
+        let response = await fetch(API_URL);
+        let comments = await response.json();
+        commentVue.comments = comments;
+    } catch (e) {
+        console.log(e);
+    }
 }
-
 document.querySelector("#filter").addEventListener("click", filter);
 
 async function filter(event) {
@@ -54,27 +52,14 @@ async function orderBy(event) {
         console.log(e);
     }
 }
-document.querySelector("#getComm").addEventListener("click", getComm);
-getComm();
 
-/*async function getComments() {
 
-    try {
-        let response = await fetch(API_URL);
-        let comments = await response.json();
-
-        commentVue.comments = comments;
-    } catch (e) {
-        console.log(e);
-    }
-    
-}
 if (document.querySelector("#formComment") != null) {
   document.querySelector("#formComment").addEventListener("submit", insertComment);
-}*/
-
-//funion para ordenar los comentarios de manera ascendente o descendente
-async function insertComment() {
+}
+async function insertComment(event) {
+    event.preventDefault();
+    console.log("function insertComment");
     let comment_content = document.querySelector("#comment_id").value;
     let rating = document.querySelector("#rating_id").value;
     let id_product = document.querySelector("#id_product").value;
@@ -93,8 +78,13 @@ async function insertComment() {
             "method": "POST",
             "headers": { "Content-type": "application/json" },
             "body": JSON.stringify(comment)
-
         });
+        if(res.status == 200){
+
+            let comment = await res.json();
+            commentVue.comments.push(comment);
+            getComm();
+        }
         
     } catch (error) {
         console.log(error)
@@ -102,4 +92,5 @@ async function insertComment() {
     }
 
 }
+getComm();
 

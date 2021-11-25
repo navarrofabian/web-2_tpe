@@ -1,5 +1,6 @@
 <?php
 require_once "./Model/ProductModel.php";
+require_once "./Model/UserModel.php";
 require_once "./View/ProductView.php";
 require_once "./Helpers/AuthHelper.php";
 require_once "./Model/CategoryModel.php";
@@ -11,6 +12,7 @@ class ProductController
     private $model;
     private $view;
     private $authHelper;
+    private $userModel;
     private $modelCategory;
     private $viewCategory;
 
@@ -22,6 +24,7 @@ class ProductController
         $admin = $this->authHelper->isAdmin();
         $this->view = new ProductView($userName, $admin);
         $this->modelCategory = new CategoryModel();
+        $this->userModel = new UserModel();
         $this->viewCategory = new CategoryView($userName, $admin);
     }
 
@@ -68,9 +71,12 @@ class ProductController
         if (!empty($id)) {
             $product = $this->model->getProduct($id);
             $categories = $this->modelCategory->getCategories();
+            $user = $this->userModel->getUser($this->authHelper->getUserName());
+            $id = $user->id_user;
+
             if ($categories) {
                 if ($product) {
-                    $this->view->showProduct($product, $categories);
+                    $this->view->showProduct($product, $categories, $id);
                 } else {
                     $this->view->showError("No existe el producto");
                 }

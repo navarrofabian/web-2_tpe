@@ -17,9 +17,10 @@ class ProductView {
         $this->smarty->display('templates/productList.tpl');    
     }
     
-    function showProduct($product, $categories){
+    function showProduct($product, $categories, $id){
         $this->smarty->assign('product', $product);
         $this->smarty->assign('categories', $categories);
+        $this->smarty->assign('id', $id);
         $this->smarty->display('templates/detail.tpl');
     }
    
